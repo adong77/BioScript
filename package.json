@@ -1,0 +1,24 @@
+{
+  "name": "BioScript",
+  "version": "1.0.0",
+  "description": "* Scripts for bioinformatics",
+  "main": "./app/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adong77/BioScript.git"
+  },
+  "keywords": [],
+  "author": "Adong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adong77/bioscript/issues"
+  },
+  "homepage": "https://github.com/adong77/BioScript#readme",
+  "devDependencies": {
+    "electron": "^12.0.9"
+  }
+}
