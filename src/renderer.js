@@ -15,8 +15,16 @@ const newWindow = document.querySelector('.new-window')
 
 newWindow.onclick = function () {
     bmWindow = new BrowserWindow({
-        width: 700,
-        height: 500
+        width: 800,
+        height: 600
     })
     bmWindow.webContents.loadFile('../scripts/Reverse_complement_DNA_sequences.html');
 }
+
+//open explorer to open html
+const allA = document.querySelectorAll('a')
+allA.forEach(item => {
+    item.onclick = function(){
+        shell.openExternal(item.href)
+    }
+})
