@@ -1,5 +1,5 @@
 {
-  "name": "BioScript",
+  "name": "bioscript",
   "version": "0.0.1",
   "description": "Scripts for bioinformatics",
   "main": "./src/main.js",

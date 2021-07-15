@@ -24,7 +24,8 @@ newWindow.onclick = function () {
 //open explorer to open html
 const allA = document.querySelectorAll('a')
 allA.forEach(item => {
-    item.onclick = function(){
+    item.onclick = function(e){
+        e.preventDefault();
         shell.openExternal(item.href)
     }
 })
