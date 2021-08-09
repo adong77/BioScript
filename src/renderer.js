@@ -19,7 +19,7 @@ newWindow.onclick = function () {
         width: 800,
         height: 600
     })
-    bmWindow.webContents.loadFile('./demo.html');
+    bmWindow.webContents.loadFile(__dirname + '/demo.html');
 }
 
 //open explorer to open html

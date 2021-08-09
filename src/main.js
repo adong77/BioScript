@@ -50,5 +50,4 @@ app.on('ready', () => {
   console.log("Hello Electron!");
  // mainWindow = new BrowserWindow();
  // mainWindow.webContents.loadFile('./src/index.html');
-}
-)
+})

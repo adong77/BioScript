@@ -6,9 +6,9 @@
     "configurations": [
         {
             "name": "Debug Main Process",
-            "type": "pwa-node",
+            "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "cwd": "${workspaceFolder}",
             "skipFiles": [
                 "<node_internals>/**"
             ],
