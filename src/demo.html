@@ -1,0 +1,25 @@
+test.html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Demo</title>
+        <style>
+            .highlight {
+                font-family: 'Courier New', Courier;
+                padding: 30px;
+            }
+            .summer {
+                font-size: 64px;
+                color: #0099FF;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="theTitle" class="highlight summer">What's happening?</h1>
+        <script>
+            var title = document.querySelector("#theTitle");
+            title.textContent = "Oppa Gannam Style!";
+        </script>
+        <script src="./demo.js"></script>
+    </body>
+</html>
