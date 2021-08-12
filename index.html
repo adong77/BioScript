@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src * ">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self''unsafe-inline'; connect-src * ">
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="./style/style.css" type="text/css">
+  </head>
+
+  <body>
+    <h1>Hello from Electron!</h1>
+    We are using Node.js <span id="node-version"></span>,
+    Chromium <span id="chrome-version"></span>,
+    and Electron <span id="electron-version"></span>.
+    <p> 
+      <button class="alert">Current Directory</button>
+    </p>
+
+    <p> 
+      <button class="new-window">Demo Page</button>
+    </p>
+
+    <div class="custom-menu">
+      <ul>
+        <li class = "new-file">New File</li>
+        <li><a href="scripts/Reverse_complement_DNA_sequences.html">Convert sequences</a></li>
+      </ul>
+    </div>
+    <!-- You can also require other files to run in this process -->
+    <script>
+      require('./renderer.js');
+    </script>
+
+  </body>
+
+</html>
