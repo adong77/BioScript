@@ -1,5 +1,5 @@
 
-const { ipcRenderer, remote: { BrowserWindow}, shell } = require('electron');
+const {  remote: { BrowserWindow}, ipcRenderer, shell } = require('electron');
 
 console.log("Hi:", __dirname);
 
@@ -11,15 +11,15 @@ button.addEventListener('click', () => {
 });
 
 
-// new window
-const newWindow = document.querySelector('.new-window')
+// demo window
+const demoWindow = document.querySelector('.demo-window')
 
-newWindow.onclick = function () {
-    bmWindow = new BrowserWindow({
+demoWindow.onclick = function () {
+    dmWindow = new BrowserWindow({
         width: 800,
         height: 600
     })
-    bmWindow.webContents.loadFile(__dirname + 'src/demo.html');
+    dmWindow.webContents.loadFile(__dirname + '/scripts/Reverse_complement_DNA_sequences.html');
 }
 
 //open explorer to open html
@@ -29,4 +29,9 @@ allA.forEach(item => {
         e.preventDefault();
         shell.openExternal(item.href)
     }
+})
+
+
+ipcRenderer.on("reverse", () => {
+    document.querySelector(".reverse").click();
 })
