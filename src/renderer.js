@@ -19,7 +19,8 @@ demoWindow.onclick = function () {
         width: 800,
         height: 600
     })
-    dmWindow.webContents.loadFile(__dirname + '/scripts/Reverse_complement_DNA_sequences.html');
+    dmWindow.webContents.loadFile(__dirname + '../scripts/Reverse_complement_DNA_sequences.html');
+    //dmWindow.webContents.loadFile('../scripts/Reverse_complement_DNA_sequences.html');
 }
 
 //open explorer to open html
