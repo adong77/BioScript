@@ -1,8 +1,12 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, ipcMain, Menu } = require('electron')
-const path = require('path')
+const { app, BrowserWindow, ipcMain } = require('electron')
+const { is, setContentSecurityPolicy } = require('electron-util');
+const config = require('./config');
 
+const path = require('path')
 //console.log(__dirname);
+
+//为免被垃圾回收，把mainWindow声明为一个变量
 let mainWindow
 
 function createWindow () {
@@ -19,11 +23,33 @@ function createWindow () {
   })
 
   // and load the index.html of the app.
- //mainWindow.webContents.loadFile('./src/index.html')
- mainWindow.loadFile( __dirname + '/index.html')
-
-  // Open the DevTools.
+ //mainWindow.webContents.loadFile('./src/index.html');
+  //  mainWindow.loadFile( __dirname + '/index.html')
+ //mainWindow.loadURL('http://www.ligene.cn/bioscript');
+ 
+ //不同环境加载不同的URL
+  if(is.development){
+    mainWindow.loadFile(config.LOCAL_WEB_URL);
+  }else{
+    mainWindow.loadFile(config.PRODUCTION_WEB_URL);
+  }
+  为生产模式设置CSP
+  if(!is.development){
+    setContentSecurityPolicy(`
+      default-src 'none';
+      script-src 'self';
+      img-src 'self' data:;
+      style-src 'self' 'unsafe-inline';
+      font-src 'self';
+      connect-src 'self' ${config.PRODUCTION_API_URL};
+      base-uri 'none';
+      form-action 'none';
+      frame-ancestors 'none';
+    `);
+  }
+  // 在开发者模式下Open the DevTools.
   // mainWindow.webContents.openDevTools()
+
 }
 
 // This method will be called when Electron has finished
@@ -31,7 +57,6 @@ function createWindow () {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   createWindow()
-  createMainMenu()
 })
 
 app.on('activate', function () {
@@ -61,22 +86,4 @@ ipcMain.on('a', (e, data) => {
   e.sender.sender('b', 321);
 })
 
-function createMainMenu(){
-  const template = [
-    {
-      label: 'Lists',
-      submenu: [
-        {
-          label: 'Reverse',
-          accelerator: 'CommandOrControl+N',
-          click(){
-            mainWindow.webContents.send("reverse");
-          }
-        }
-      ]
-    }
-  ];
 
-  const menu = Menu.buildFromTemplate(template);
-  Menu.setApplicationMenu(menu);
-}

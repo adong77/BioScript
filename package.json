@@ -5,13 +5,22 @@
   "main": "./src/main.js",
   "scripts": {
     "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "build": {
+    "appId": "cn.ligene.bioscript",
+    "productName": "bioscript"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/adong77/BioScript.git"
   },
-  "keywords": ["Bioinformatics", "Genomics"],
+  "keywords": [
+    "Bioinformatics",
+    "Genomics"
+  ],
   "author": "Adong",
   "license": "ISC",
   "bugs": {
@@ -20,6 +29,10 @@
   "homepage": "https://github.com/adong77/BioScript#readme",
   "devDependencies": {
     "electron": "^12.0.14",
+    "electron-builder": "^22.14.5",
     "electron-reloader": "^1.2.1"
+  },
+  "dependencies": {
+    "electron-util": "^0.17.2"
   }
 }
