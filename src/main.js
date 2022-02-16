@@ -1,26 +1,26 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow, ipcMain } = require('electron')
 const { is, setContentSecurityPolicy } = require('electron-util');
-const config = require('./config');
+const config = require('../config');
 
 const path = require('path')
 //console.log(__dirname);
 
 //为免被垃圾回收，把mainWindow声明为一个变量
-let mainWindow
+let mainWindow = null;
 
+// Create the browser window.
 function createWindow () {
-  // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 900, 
     height: 600,
     webPreferences:{
-      preload: '${__dirname}/renderer.js',
+      //preload: '${__dirname}/renderer.js',
       nodeIntegration: true,    //开启node模块
       enableRemoteModule: true,  //开启remote模块
       contextIsolation: false   //出现require is not defined的问题,需要再加此设置
     }
-  })
+  });
 
   // and load the index.html of the app.
  //mainWindow.webContents.loadFile('./src/index.html');
@@ -29,11 +29,12 @@ function createWindow () {
  
  //不同环境加载不同的URL
   if(is.development){
-    mainWindow.loadFile(config.LOCAL_WEB_URL);
+    //mainWindow.loadFile(config.LOCAL_WEB_URL);
+    mainWindow.loadFile( __dirname + '/index.html')
   }else{
     mainWindow.loadFile(config.PRODUCTION_WEB_URL);
   }
-  为生产模式设置CSP
+  //为生产模式设置CSP
   if(!is.development){
     setContentSecurityPolicy(`
       default-src 'none';
@@ -48,8 +49,12 @@ function createWindow () {
     `);
   }
   // 在开发者模式下Open the DevTools.
-  // mainWindow.webContents.openDevTools()
-
+  if(is.development){
+    mainWindow.webContents.openDevTools();
+  }
+  // mainWindow.on('closed', function(){
+  //   mainWindow = null; // 关闭窗口后重置window对象,macOS??
+  // });
 }
 
 // This method will be called when Electron has finished
@@ -73,9 +78,8 @@ app.on('window-all-closed', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-app.on('closed', function(){
-  mainWindow = null
-})
+
+
 
 app.on('ready', () => {
   console.log("Hello Electron!");

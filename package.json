@@ -5,13 +5,17 @@
   "main": "./src/main.js",
   "scripts": {
     "start": "electron .",
+    "dev": "http-server ./app && electron .",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "build": {
     "appId": "cn.ligene.bioscript",
-    "productName": "bioscript"
+    "productName": "bioscript",
+    "directories": {
+      "buildResources": "resources"
+    }
   },
   "repository": {
     "type": "git",
@@ -33,6 +37,7 @@
     "electron-reloader": "^1.2.1"
   },
   "dependencies": {
-    "electron-util": "^0.17.2"
+    "electron-util": "^0.17.2",
+    "http-server": "^14.1.0"
   }
 }
