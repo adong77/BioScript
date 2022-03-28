@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<!-- saved from url=(0072)https://arep.med.harvard.edu/labgc/adnan/projects/Utilities/revcomp.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (WinNT; I) [Netscape]">
+   <title>Reverse and/or complement DNA sequences</title>
+</head>
+<body>
+<br>
+Reverse and/or complement DNA sequences. Separate sequences with line returns. 
+Complementarity will follow the <a href="https://arep.med.harvard.edu/labgc/adnan/projects/Utilities/revcomp.html#iupacdegeneracies">IUPAC convention</a>.
+
+<form method="POST" action="http://arep.med.harvard.edu/cgi-bin/adnan/revcomp.pl">
+<!--FORM METHOD=GET ACTION="http://arep.med.harvard.edu/cgi-bin/Utilities/revcomp.pl"-->
+
+<textarea name="sequences" rows="5" cols="50"></textarea><br><br>
+<input type="submit" name="action" value="reverse">&nbsp;&nbsp;&nbsp;<input type="submit" name="action" value="complement">&nbsp;&nbsp;&nbsp;<input type="submit" name="action" value="reverse complement">
+&nbsp;&nbsp;&nbsp;<input type="reset" value="Reset">
+</form>
+<br>
+<b><a name="iupacdegeneracies">IUPAC Degeneracies</a></b>
+<br>
+<br>
+<table border="1">
+        <tbody><tr align="CENTER"><th>Base</th><th>Name</th><th>Bases Represented</th><th>Complementary Base</th>      </tr>
+        <tr align="CENTER"><th>A</th><td>Adenine</td><td>A</td><td>T</td>       </tr>
+        <tr align="CENTER"><th>T</th><td>Thymidine</td><td>T</td><td>A</td>     </tr>
+        <tr align="CENTER"><th>U</th><td>Uridine(RNA only)</td><td>U</td> <td>A</td>    </tr>
+        <tr align="CENTER"><th>G</th><td>Guanidine</td><td>G</td><td>C</td>     </tr>
+        <tr align="CENTER"><th>C</th><td>Cytidine</td><td>C</td><td>G</td>      </tr>
+        <tr align="CENTER"><th>Y</th><td>pYrimidine</td><td>C T</td><td>R</td>  </tr>
+        <tr align="CENTER"><th>R</th><td>puRine</td><td>A G</td><td>Y</td>      </tr>
+        <tr align="CENTER"><th>S</th><td>Strong(3Hbonds)</td><td>G C</td><td>S*</td>     </tr>
+        <tr align="CENTER"><th>W</th><td>Weak(2Hbonds)</td><td>A T</td><td>W*</td>       </tr>
+        <tr align="CENTER"><th>K</th><td>Keto</td><td>T/U G</td><td>M</td>      </tr>
+        <tr align="CENTER"><th>M</th><td>aMino</td><td>A C</td><td>K</td>       </tr>
+        <tr align="CENTER"><th>B</th><td>not A</td><td>C G T</td><td>V</td>     </tr>
+        <tr align="CENTER"><th>D</th><td>not C</td><td>A G T</td><td>H</td>     </tr>
+        <tr align="CENTER"><th>H</th><td>not G</td><td>A C T</td><td>D</td>     </tr>
+        <tr align="CENTER"><th>V</th><td>not T/U</td><td>A C G</td><td>B</td>   </tr>
+        <tr align="CENTER"><th>N</th><td>Unknown</td><td>A C G T</td><td>N</td> </tr>
+</tbody></table>
+Source: http://hornet.bio.uci.edu/~hjm/projects/tacg/ (no longer online)
+<p>* Thanks to Joost Kolkman at Maxygen who pointed out that revcomp(S)=S and revcomp(W)=W; in the source above (no longer online), revcomp(S) was W and vice-versa, which is is incorrect. I knew that but hadn't verified.
+
+
+</p></body></html>

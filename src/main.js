@@ -16,6 +16,7 @@ function createWindow () {
     height: 600,
     webPreferences:{
       //preload: '${__dirname}/renderer.js',
+      webSecurity: false,
       nodeIntegration: true,    //开启node模块
       enableRemoteModule: true,  //开启remote模块
       contextIsolation: false   //出现require is not defined的问题,需要再加此设置
@@ -29,10 +30,10 @@ function createWindow () {
  
  //不同环境加载不同的URL
   if(is.development){
-    //mainWindow.loadFile(config.LOCAL_WEB_URL);
-    mainWindow.loadFile( __dirname + '/index.html')
+    mainWindow.loadURL(config.LOCAL_WEB_URL);
+    //mainWindow.loadFile( __dirname + '/index.html')
   }else{
-    mainWindow.loadFile(config.PRODUCTION_WEB_URL);
+    mainWindow.loadURL(config.PRODUCTION_WEB_URL);
   }
   //为生产模式设置CSP
   if(!is.development){
@@ -43,6 +44,7 @@ function createWindow () {
       style-src 'self' 'unsafe-inline';
       font-src 'self';
       connect-src 'self' ${config.PRODUCTION_API_URL};
+      connect-src 'self' ${config.LOCAL_WEB_URL};
       base-uri 'none';
       form-action 'none';
       frame-ancestors 'none';
