@@ -3,7 +3,8 @@ const { app, BrowserWindow, ipcMain } = require('electron')
 const { is, setContentSecurityPolicy } = require('electron-util');
 const config = require('../config');
 
-const path = require('path')
+const path = require('path');
+const startServer = require('./server');
 //console.log(__dirname);
 
 //为免被垃圾回收，把mainWindow声明为一个变量
@@ -11,6 +12,7 @@ let mainWindow = null;
 
 // Create the browser window.
 function createWindow () {
+  startServer();
   const mainWindow = new BrowserWindow({
     width: 900, 
     height: 600,

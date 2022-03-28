@@ -39,6 +39,7 @@
   "dependencies": {
     "concurrently": "^7.0.0",
     "electron-util": "^0.17.2",
+    "express": "^4.17.3",
     "http-server": "^14.1.0"
   }
 }
