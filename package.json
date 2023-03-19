@@ -6,8 +6,8 @@
   "scripts": {
     "start": "electron .",
     "dev": "concurrently \"http-server app --cors\" \"electron .\"",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder",
+    "build:win": "electron-builder --win --dir",
+    "dist:win": "electron-builder --win",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "build": {
