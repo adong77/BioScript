@@ -32,8 +32,8 @@ function createWindow () {
  
  //不同环境加载不同的URL
   if(is.development){
-    mainWindow.loadURL(config.LOCAL_WEB_URL);
-    //mainWindow.loadFile( __dirname + '/index.html')
+    // mainWindow.loadURL(config.LOCAL_WEB_URL);
+    mainWindow.loadFile( __dirname + '/index.html')
   }else{
     mainWindow.loadURL(config.PRODUCTION_WEB_URL);
   }
