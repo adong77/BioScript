@@ -1,11 +1,11 @@
 {
   "name": "bioscript",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Bioinformatics Scripts",
   "main": "./src/main.js",
   "scripts": {
     "start": "electron .",
-    "dev": "concurrently \"http-server app --cors\" \"electron .\"",
+    "dev": "concurrently \"http-server apps --cors\" \"electron .\"",
     "build:win": "electron-builder --win --dir",
     "dist:win": "electron-builder --win",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,7 +15,15 @@
     "productName": "bioscript",
     "directories": {
       "buildResources": "resources"
-    }
+    },
+    "files": [
+      "src/main.js",
+      "src/**/*",
+      "config.js",
+      "apps/**/*",
+      "public/**/*",
+      "resources"
+    ]
   },
   "repository": {
     "type": "git",
@@ -25,21 +33,19 @@
     "Bioinformatics",
     "Genomics"
   ],
-  "author": "Adong",
+  "author": "Adong <youdng@hotmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/adong77/bioscript/issues"
   },
-  "homepage": "https://github.com/adong77/BioScript#readme",
+  "homepage": "./",
   "devDependencies": {
-    "electron": "^12.0.14",
-    "electron-builder": "^22.14.5",
+    "electron": "^23.1.4",
+    "electron-builder": "^23.6.0",
     "electron-reloader": "^1.2.1"
   },
   "dependencies": {
     "concurrently": "^7.0.0",
-    "electron-util": "^0.17.2",
-    "express": "^4.17.3",
     "http-server": "^14.1.0"
   }
 }
